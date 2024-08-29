@@ -14,10 +14,10 @@ github：https://github.com/yeetime/sou2
 var se_list_preinstall = {
     '1': {
         id: 1,
-        title: "百度",
-        url: "https://www.baidu.com/s",
-        name: "wd",
-        img: "./icon/baidu.ico",
+        title: "必应",
+        url: "https://cn.bing.com/search",
+        name: "q",
+        img: "./icon/bing.ico",
     },
     '2': {
         id: 2,
@@ -28,10 +28,10 @@ var se_list_preinstall = {
     },
     '3': {
         id: 3,
-        title: "必应",
-        url: "https://cn.bing.com/search",
-        name: "q",
-        img: "./icon/bing.ico",
+        title: "百度",
+        url: "https://www.baidu.com/s",
+        name: "wd",
+        img: "./icon/baidu.ico",
     }
 };
 
@@ -95,8 +95,8 @@ var themes_preinstall = {
 
 //背景图片
 var bg_img_preinstall = {
-    "type" : "3",// 1:使用主题默认的背景图片、2:关闭背景图片、3:使用自定义的背景图片
-    "path" : "https://cdn.jsdelivr.net/gh/yeetime/img/20200627173550.png",//背景图片
+    "type": "3",// 1:使用主题默认的背景图片、2:关闭背景图片、3:使用自定义的背景图片
+    "path": "https://bing.img.run/1920x1080.php",//背景图片
 };
 
 // 获取背景图片
@@ -111,9 +111,9 @@ function getBgImg() {
 }
 
 // 设置背景图片
-function setBgImg(bg_img){
+function setBgImg(bg_img) {
     if (bg_img) {
-        Cookies.set('bg_img', bg_img, {expires: 36500});
+        Cookies.set('bg_img', bg_img, { expires: 36500 });
         return true;
     }
     return false;
@@ -122,7 +122,7 @@ function setBgImg(bg_img){
 // 设置-壁纸
 function setBgImgInit() {
     var bg_img = getBgImg();
-    $("input[name='wallpaper-type'][value="+bg_img["type"]+"]").click();
+    $("input[name='wallpaper-type'][value=" + bg_img["type"] + "]").click();
     if (bg_img["type"] === "3") {
         $("#wallpaper-url").val(bg_img["path"]);
         $("#wallpaper_url").show();
@@ -145,7 +145,7 @@ function getSeList() {
 // 设置搜索引擎列表
 function setSeList(se_list) {
     if (se_list) {
-        Cookies.set('se_list', se_list, {expires: 36500});
+        Cookies.set('se_list', se_list, { expires: 36500 });
         return true;
     }
     return false;
@@ -167,7 +167,7 @@ function themesInit() {
     switch (bg_img["type"]) {
         case "1":
             if (theme["bg_img"]) {
-                $("body").css("background-image", "url(\"" + theme["bg_img"] +"\")");//主题图片
+                $("body").css("background-image", "url(\"" + theme["bg_img"] + "\")");//主题图片
             } else {
                 $("body").css("background-image", "none");//无
             }
@@ -176,7 +176,7 @@ function themesInit() {
             $("body").css("background-image", "none");//无
             break;
         case "3":
-            $("body").css("background-image", "url(\"" + bg_img["path"] +"\")");//自定义
+            $("body").css("background-image", "url(\"" + bg_img["path"] + "\")");//自定义
             break;
     }
 
@@ -201,9 +201,9 @@ function themesInit() {
     $(".search-engine-tip").css({
         "border-bottom": "8px solid " + theme["pop_bg"],
     });//搜索引擎选择弹窗上的箭头
-    $(".quick").css({"background-color": theme["bottom_bg"]});//快捷方式
-    $(".quick a").css({"color": theme["text_color"]});//快捷方式 文本
-    $(".foot").css({"color": theme["text_color"]});//底部 文本
+    $(".quick").css({ "background-color": theme["bottom_bg"] });//快捷方式
+    $(".quick a").css({ "color": theme["text_color"] });//快捷方式 文本
+    $(".foot").css({ "color": theme["text_color"] });//底部 文本
 }
 
 // 获取默认主题
@@ -214,7 +214,7 @@ function getThemesDefault() {
 
 // 修改默认主题
 function setThemesDefault(key) {
-    Cookies.set('theme_default', key, {expires: 36500});
+    Cookies.set('theme_default', key, { expires: 36500 });
     return true;
 }
 
@@ -232,7 +232,7 @@ function getThemes() {
 // 设置主题列表 Cookies
 function setThemes(themes) {
     if (themes) {
-        Cookies.set('themes', themes, {expires: 36500});
+        Cookies.set('themes', themes, { expires: 36500 });
         return true;
     }
     return false;
@@ -362,7 +362,7 @@ function getQuickList() {
 // 设置快捷方式列表
 function setQuickList(quick_list) {
     if (quick_list) {
-        Cookies.set('quick_list', quick_list, {expires: 36500});
+        Cookies.set('quick_list', quick_list, { expires: 36500 });
         return true;
     }
     return false;
@@ -495,7 +495,7 @@ $(document).ready(function () {
     });
 
     // 自动提示( 调用百度 api ）
-    $('.wd').keyup(function(event) {
+    $('.wd').keyup(function (event) {
         var key = event.keyCode;
         // 屏蔽上下键
         var shieldKey = [38, 40];
@@ -564,7 +564,7 @@ $(document).ready(function () {
     // 修改默认搜索引擎
     $(".se_list_table").on("click", ".set_se_default", function () {
         var name = $(this).val();
-        Cookies.set('se_default', name, {expires: 36500});
+        Cookies.set('se_default', name, { expires: 36500 });
         setSeInit();
     });
 
@@ -653,7 +653,7 @@ $(document).ready(function () {
         var r = confirm("现有设置和数据将被清空！");
         if (r) {
             setSeList(se_list_preinstall);
-            Cookies.set('se_default', 1, {expires: 36500});
+            Cookies.set('se_default', 1, { expires: 36500 });
             setSeInit();
         }
     });
@@ -680,10 +680,10 @@ $(document).ready(function () {
 
         var quick_list = getQuickList();
 
-//         if (quick_list[key]) {
-//             alert("顺序:" + key + " 已有数据，不可用");
-//             return;
-//         }
+        //         if (quick_list[key]) {
+        //             alert("顺序:" + key + " 已有数据，不可用");
+        //             return;
+        //         }
 
         if (key_inhere && key != key_inhere) {
             delete quick_list[key_inhere];
@@ -811,8 +811,8 @@ $(document).ready(function () {
             }
 
             if (confirm("当前数据将被覆盖！是否继续导入？")) {
-                for(var key in mydata) {
-                    Cookies.set(key, mydata[key], {expires: 36500});
+                for (var key in mydata) {
+                    Cookies.set(key, mydata[key], { expires: 36500 });
                 }
                 alert("导入成功");
             }
